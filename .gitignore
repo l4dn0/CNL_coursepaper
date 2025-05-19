@@ -2,8 +2,7 @@ ruwordnet.db
 cnl_to_insert.txt
 images.db
 
-screens/*
-screens/!.gitignore
+screens/
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm+all
