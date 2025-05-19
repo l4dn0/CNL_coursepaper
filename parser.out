@@ -1,0 +1,2167 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> s
+Rule 1     s -> sl
+Rule 2     sl -> sentence
+Rule 3     empty -> <empty>
+Rule 4     sl -> sl sentence
+Rule 5     sentence -> aim_condition sub_pred DOT
+Rule 6     aim_condition -> empty
+Rule 7     aim_condition -> aim_condition_prep sub_pred COMMA
+Rule 8     aim_condition_prep -> IF
+Rule 9     aim_condition_prep -> FOR
+Rule 10    sub_pred -> sub pred
+Rule 11    sub -> name
+Rule 12    name -> prop_noun aggregate_material_loc_part_except
+Rule 13    prop_noun -> prop NOUN prop
+Rule 14    op -> AND
+Rule 15    op -> OR
+Rule 16    op -> DASH
+Rule 17    prop -> empty
+Rule 18    prop -> ADJF prop
+Rule 19    prop -> LPAREN prop op prop RPAREN prop
+Rule 20    aggregate_material_loc_part_except -> aggregate material loc part except
+Rule 21    prop_gent -> empty
+Rule 22    prop_gent -> ADJF_gent prop_gent
+Rule 23    prop_ablt -> empty
+Rule 24    prop_ablt -> ADJF_ablt prop_ablt
+Rule 25    prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+Rule 26    aggregate -> empty
+Rule 27    aggregate -> prop_gent Gent_noun_prtf__plur aggregate
+Rule 28    aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate
+Rule 29    material -> empty
+Rule 30    material -> FROM prop_gent Gent_noun_prtf__plur
+Rule 31    loc -> empty
+Rule 32    loc -> LOC_PREP prop_name aggregate
+Rule 33    part -> empty
+Rule 34    part -> prep_part prop_name part
+Rule 35    prop_name -> prop_noun
+Rule 36    prop_name -> prop_gent Gent_noun_prtf__plur
+Rule 37    prop_name -> prop_gent Loct
+Rule 38    prop_name -> prop_ablt Ablt prop_ablt
+Rule 39    prep_part -> WITH
+Rule 40    prep_part -> WITHOUT
+Rule 41    except -> empty
+Rule 42    except -> EXCEPT aggregate
+Rule 43    pred -> empty
+Rule 44    pred -> quality feature obj_instr
+Rule 45    quality -> empty
+Rule 46    quality -> ADVB
+Rule 47    feature -> act
+Rule 48    feature -> relation
+Rule 49    act -> VERB
+Rule 50    act -> INFN
+Rule 51    act -> PRTS
+Rule 52    act -> PRCL
+Rule 53    relation -> COMP
+Rule 54    obj_instr -> obj instr
+Rule 55    obj -> empty
+Rule 56    obj -> obj_loc obj_name
+Rule 57    obj -> obj_name
+Rule 58    obj_loc -> LOC_PREP
+Rule 59    obj_loc -> FROM
+Rule 60    obj_name -> name
+Rule 61    obj_name -> prop_gent Gent_noun_prtf__plur aggregate_material_loc_part_except
+Rule 62    instr -> empty
+Rule 63    instr -> Ablt prop_ablt
+
+Terminals, with rules where they appear
+
+ADJF                 : 18
+ADJF_ablt            : 24
+ADJF_gent            : 22
+ADVB                 : 46
+AND                  : 14
+Ablt                 : 38 63
+COMMA                : 7
+COMP                 : 53
+DASH                 : 16
+DOT                  : 5
+EXCEPT               : 42
+FOR                  : 9
+FROM                 : 30 59
+Gent_noun_prtf__plur : 27 30 36 61
+IF                   : 8
+INFN                 : 50
+LCURLYBRACE          : 25
+LOC_PREP             : 32 58
+LPAREN               : 19
+LSBRACKET            : 28
+Loct                 : 37
+NOUN                 : 13
+OR                   : 15
+PRCL                 : 52
+PRTS                 : 51
+RCURLYBRACE          : 25
+RPAREN               : 19
+RSBRACKET            : 28
+VERB                 : 49
+WITH                 : 39
+WITHOUT              : 40
+error                : 
+
+Nonterminals, with rules where they appear
+
+act                  : 47
+aggregate            : 20 27 28 28 28 32 42
+aggregate_material_loc_part_except : 12 61
+aim_condition        : 5
+aim_condition_prep   : 7
+empty                : 6 17 21 23 26 29 31 33 41 43 45 55 62
+except               : 20
+feature              : 44
+instr                : 54
+loc                  : 20
+material             : 20
+name                 : 11 60
+obj                  : 54
+obj_instr            : 44
+obj_loc              : 56
+obj_name             : 56 57
+op                   : 19 25 28
+part                 : 20 34
+pred                 : 10
+prep_part            : 34
+prop                 : 13 13 18 19 19 19
+prop_ablt            : 24 25 25 25 38 38 63
+prop_gent            : 22 27 30 36 37 61
+prop_name            : 32 34
+prop_noun            : 12 35
+quality              : 44
+relation             : 48
+s                    : 0
+sentence             : 2 4
+sl                   : 1 4
+sub                  : 10
+sub_pred             : 5 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . s
+    (1) s -> . sl
+    (2) sl -> . sentence
+    (4) sl -> . sl sentence
+    (5) sentence -> . aim_condition sub_pred DOT
+    (6) aim_condition -> . empty
+    (7) aim_condition -> . aim_condition_prep sub_pred COMMA
+    (3) empty -> .
+    (8) aim_condition_prep -> . IF
+    (9) aim_condition_prep -> . FOR
+
+    ADJF            reduce using rule 3 (empty -> .)
+    LPAREN          reduce using rule 3 (empty -> .)
+    NOUN            reduce using rule 3 (empty -> .)
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+
+    s                              shift and go to state 1
+    sl                             shift and go to state 2
+    sentence                       shift and go to state 3
+    aim_condition                  shift and go to state 4
+    empty                          shift and go to state 5
+    aim_condition_prep             shift and go to state 6
+
+state 1
+
+    (0) S' -> s .
+
+
+
+state 2
+
+    (1) s -> sl .
+    (4) sl -> sl . sentence
+    (5) sentence -> . aim_condition sub_pred DOT
+    (6) aim_condition -> . empty
+    (7) aim_condition -> . aim_condition_prep sub_pred COMMA
+    (3) empty -> .
+    (8) aim_condition_prep -> . IF
+    (9) aim_condition_prep -> . FOR
+
+    $end            reduce using rule 1 (s -> sl .)
+    ADJF            reduce using rule 3 (empty -> .)
+    LPAREN          reduce using rule 3 (empty -> .)
+    NOUN            reduce using rule 3 (empty -> .)
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+
+    sentence                       shift and go to state 9
+    aim_condition                  shift and go to state 4
+    empty                          shift and go to state 5
+    aim_condition_prep             shift and go to state 6
+
+state 3
+
+    (2) sl -> sentence .
+
+    IF              reduce using rule 2 (sl -> sentence .)
+    FOR             reduce using rule 2 (sl -> sentence .)
+    ADJF            reduce using rule 2 (sl -> sentence .)
+    LPAREN          reduce using rule 2 (sl -> sentence .)
+    NOUN            reduce using rule 2 (sl -> sentence .)
+    $end            reduce using rule 2 (sl -> sentence .)
+
+
+state 4
+
+    (5) sentence -> aim_condition . sub_pred DOT
+    (10) sub_pred -> . sub pred
+    (11) sub -> . name
+    (12) name -> . prop_noun aggregate_material_loc_part_except
+    (13) prop_noun -> . prop NOUN prop
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+    (3) empty -> .
+
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+    NOUN            reduce using rule 3 (empty -> .)
+
+    sub_pred                       shift and go to state 10
+    sub                            shift and go to state 11
+    name                           shift and go to state 12
+    prop_noun                      shift and go to state 13
+    prop                           shift and go to state 14
+    empty                          shift and go to state 15
+
+state 5
+
+    (6) aim_condition -> empty .
+
+    ADJF            reduce using rule 6 (aim_condition -> empty .)
+    LPAREN          reduce using rule 6 (aim_condition -> empty .)
+    NOUN            reduce using rule 6 (aim_condition -> empty .)
+
+
+state 6
+
+    (7) aim_condition -> aim_condition_prep . sub_pred COMMA
+    (10) sub_pred -> . sub pred
+    (11) sub -> . name
+    (12) name -> . prop_noun aggregate_material_loc_part_except
+    (13) prop_noun -> . prop NOUN prop
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+    (3) empty -> .
+
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+    NOUN            reduce using rule 3 (empty -> .)
+
+    sub_pred                       shift and go to state 18
+    sub                            shift and go to state 11
+    name                           shift and go to state 12
+    prop_noun                      shift and go to state 13
+    prop                           shift and go to state 14
+    empty                          shift and go to state 15
+
+state 7
+
+    (8) aim_condition_prep -> IF .
+
+    ADJF            reduce using rule 8 (aim_condition_prep -> IF .)
+    LPAREN          reduce using rule 8 (aim_condition_prep -> IF .)
+    NOUN            reduce using rule 8 (aim_condition_prep -> IF .)
+
+
+state 8
+
+    (9) aim_condition_prep -> FOR .
+
+    ADJF            reduce using rule 9 (aim_condition_prep -> FOR .)
+    LPAREN          reduce using rule 9 (aim_condition_prep -> FOR .)
+    NOUN            reduce using rule 9 (aim_condition_prep -> FOR .)
+
+
+state 9
+
+    (4) sl -> sl sentence .
+
+    IF              reduce using rule 4 (sl -> sl sentence .)
+    FOR             reduce using rule 4 (sl -> sl sentence .)
+    ADJF            reduce using rule 4 (sl -> sl sentence .)
+    LPAREN          reduce using rule 4 (sl -> sl sentence .)
+    NOUN            reduce using rule 4 (sl -> sl sentence .)
+    $end            reduce using rule 4 (sl -> sl sentence .)
+
+
+state 10
+
+    (5) sentence -> aim_condition sub_pred . DOT
+
+    DOT             shift and go to state 19
+
+
+state 11
+
+    (10) sub_pred -> sub . pred
+    (43) pred -> . empty
+    (44) pred -> . quality feature obj_instr
+    (3) empty -> .
+    (45) quality -> . empty
+    (46) quality -> . ADVB
+
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    ADVB            shift and go to state 23
+
+    pred                           shift and go to state 20
+    empty                          shift and go to state 21
+    quality                        shift and go to state 22
+
+state 12
+
+    (11) sub -> name .
+
+    ADVB            reduce using rule 11 (sub -> name .)
+    VERB            reduce using rule 11 (sub -> name .)
+    INFN            reduce using rule 11 (sub -> name .)
+    PRTS            reduce using rule 11 (sub -> name .)
+    PRCL            reduce using rule 11 (sub -> name .)
+    COMP            reduce using rule 11 (sub -> name .)
+    DOT             reduce using rule 11 (sub -> name .)
+    COMMA           reduce using rule 11 (sub -> name .)
+
+
+state 13
+
+    (12) name -> prop_noun . aggregate_material_loc_part_except
+    (20) aggregate_material_loc_part_except -> . aggregate material loc part except
+    (26) aggregate -> . empty
+    (27) aggregate -> . prop_gent Gent_noun_prtf__plur aggregate
+    (28) aggregate -> . LSBRACKET aggregate op aggregate RSBRACKET aggregate
+    (3) empty -> .
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+
+    LSBRACKET       shift and go to state 28
+    FROM            reduce using rule 3 (empty -> .)
+    LOC_PREP        reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADJF_gent       shift and go to state 29
+
+    aggregate_material_loc_part_except shift and go to state 24
+    aggregate                      shift and go to state 25
+    empty                          shift and go to state 26
+    prop_gent                      shift and go to state 27
+
+state 14
+
+    (13) prop_noun -> prop . NOUN prop
+
+    NOUN            shift and go to state 30
+
+
+state 15
+
+    (17) prop -> empty .
+
+    NOUN            reduce using rule 17 (prop -> empty .)
+    AND             reduce using rule 17 (prop -> empty .)
+    OR              reduce using rule 17 (prop -> empty .)
+    DASH            reduce using rule 17 (prop -> empty .)
+    LSBRACKET       reduce using rule 17 (prop -> empty .)
+    ADJF_gent       reduce using rule 17 (prop -> empty .)
+    FROM            reduce using rule 17 (prop -> empty .)
+    LOC_PREP        reduce using rule 17 (prop -> empty .)
+    WITH            reduce using rule 17 (prop -> empty .)
+    WITHOUT         reduce using rule 17 (prop -> empty .)
+    EXCEPT          reduce using rule 17 (prop -> empty .)
+    Gent_noun_prtf__plur reduce using rule 17 (prop -> empty .)
+    ADVB            reduce using rule 17 (prop -> empty .)
+    VERB            reduce using rule 17 (prop -> empty .)
+    INFN            reduce using rule 17 (prop -> empty .)
+    PRTS            reduce using rule 17 (prop -> empty .)
+    PRCL            reduce using rule 17 (prop -> empty .)
+    COMP            reduce using rule 17 (prop -> empty .)
+    DOT             reduce using rule 17 (prop -> empty .)
+    COMMA           reduce using rule 17 (prop -> empty .)
+    Ablt            reduce using rule 17 (prop -> empty .)
+    RPAREN          reduce using rule 17 (prop -> empty .)
+
+
+state 16
+
+    (18) prop -> ADJF . prop
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+    (3) empty -> .
+
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+    NOUN            reduce using rule 3 (empty -> .)
+    AND             reduce using rule 3 (empty -> .)
+    OR              reduce using rule 3 (empty -> .)
+    DASH            reduce using rule 3 (empty -> .)
+    LSBRACKET       reduce using rule 3 (empty -> .)
+    ADJF_gent       reduce using rule 3 (empty -> .)
+    FROM            reduce using rule 3 (empty -> .)
+    LOC_PREP        reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    RPAREN          reduce using rule 3 (empty -> .)
+
+    prop                           shift and go to state 31
+    empty                          shift and go to state 15
+
+state 17
+
+    (19) prop -> LPAREN . prop op prop RPAREN prop
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+    (3) empty -> .
+
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+    AND             reduce using rule 3 (empty -> .)
+    OR              reduce using rule 3 (empty -> .)
+    DASH            reduce using rule 3 (empty -> .)
+
+    prop                           shift and go to state 32
+    empty                          shift and go to state 15
+
+state 18
+
+    (7) aim_condition -> aim_condition_prep sub_pred . COMMA
+
+    COMMA           shift and go to state 33
+
+
+state 19
+
+    (5) sentence -> aim_condition sub_pred DOT .
+
+    IF              reduce using rule 5 (sentence -> aim_condition sub_pred DOT .)
+    FOR             reduce using rule 5 (sentence -> aim_condition sub_pred DOT .)
+    ADJF            reduce using rule 5 (sentence -> aim_condition sub_pred DOT .)
+    LPAREN          reduce using rule 5 (sentence -> aim_condition sub_pred DOT .)
+    NOUN            reduce using rule 5 (sentence -> aim_condition sub_pred DOT .)
+    $end            reduce using rule 5 (sentence -> aim_condition sub_pred DOT .)
+
+
+state 20
+
+    (10) sub_pred -> sub pred .
+
+    DOT             reduce using rule 10 (sub_pred -> sub pred .)
+    COMMA           reduce using rule 10 (sub_pred -> sub pred .)
+
+
+state 21
+
+    (43) pred -> empty .
+    (45) quality -> empty .
+
+    DOT             reduce using rule 43 (pred -> empty .)
+    COMMA           reduce using rule 43 (pred -> empty .)
+    VERB            reduce using rule 45 (quality -> empty .)
+    INFN            reduce using rule 45 (quality -> empty .)
+    PRTS            reduce using rule 45 (quality -> empty .)
+    PRCL            reduce using rule 45 (quality -> empty .)
+    COMP            reduce using rule 45 (quality -> empty .)
+
+
+state 22
+
+    (44) pred -> quality . feature obj_instr
+    (47) feature -> . act
+    (48) feature -> . relation
+    (49) act -> . VERB
+    (50) act -> . INFN
+    (51) act -> . PRTS
+    (52) act -> . PRCL
+    (53) relation -> . COMP
+
+    VERB            shift and go to state 37
+    INFN            shift and go to state 38
+    PRTS            shift and go to state 39
+    PRCL            shift and go to state 40
+    COMP            shift and go to state 41
+
+    feature                        shift and go to state 34
+    act                            shift and go to state 35
+    relation                       shift and go to state 36
+
+state 23
+
+    (46) quality -> ADVB .
+
+    VERB            reduce using rule 46 (quality -> ADVB .)
+    INFN            reduce using rule 46 (quality -> ADVB .)
+    PRTS            reduce using rule 46 (quality -> ADVB .)
+    PRCL            reduce using rule 46 (quality -> ADVB .)
+    COMP            reduce using rule 46 (quality -> ADVB .)
+
+
+state 24
+
+    (12) name -> prop_noun aggregate_material_loc_part_except .
+
+    ADVB            reduce using rule 12 (name -> prop_noun aggregate_material_loc_part_except .)
+    VERB            reduce using rule 12 (name -> prop_noun aggregate_material_loc_part_except .)
+    INFN            reduce using rule 12 (name -> prop_noun aggregate_material_loc_part_except .)
+    PRTS            reduce using rule 12 (name -> prop_noun aggregate_material_loc_part_except .)
+    PRCL            reduce using rule 12 (name -> prop_noun aggregate_material_loc_part_except .)
+    COMP            reduce using rule 12 (name -> prop_noun aggregate_material_loc_part_except .)
+    DOT             reduce using rule 12 (name -> prop_noun aggregate_material_loc_part_except .)
+    COMMA           reduce using rule 12 (name -> prop_noun aggregate_material_loc_part_except .)
+    Ablt            reduce using rule 12 (name -> prop_noun aggregate_material_loc_part_except .)
+
+
+state 25
+
+    (20) aggregate_material_loc_part_except -> aggregate . material loc part except
+    (29) material -> . empty
+    (30) material -> . FROM prop_gent Gent_noun_prtf__plur
+    (3) empty -> .
+
+    FROM            shift and go to state 44
+    LOC_PREP        reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+
+    material                       shift and go to state 42
+    empty                          shift and go to state 43
+
+state 26
+
+    (26) aggregate -> empty .
+    (21) prop_gent -> empty .
+
+    FROM            reduce using rule 26 (aggregate -> empty .)
+    LOC_PREP        reduce using rule 26 (aggregate -> empty .)
+    WITH            reduce using rule 26 (aggregate -> empty .)
+    WITHOUT         reduce using rule 26 (aggregate -> empty .)
+    EXCEPT          reduce using rule 26 (aggregate -> empty .)
+    ADVB            reduce using rule 26 (aggregate -> empty .)
+    VERB            reduce using rule 26 (aggregate -> empty .)
+    INFN            reduce using rule 26 (aggregate -> empty .)
+    PRTS            reduce using rule 26 (aggregate -> empty .)
+    PRCL            reduce using rule 26 (aggregate -> empty .)
+    COMP            reduce using rule 26 (aggregate -> empty .)
+    DOT             reduce using rule 26 (aggregate -> empty .)
+    COMMA           reduce using rule 26 (aggregate -> empty .)
+    Ablt            reduce using rule 26 (aggregate -> empty .)
+    AND             reduce using rule 26 (aggregate -> empty .)
+    OR              reduce using rule 26 (aggregate -> empty .)
+    DASH            reduce using rule 26 (aggregate -> empty .)
+    RSBRACKET       reduce using rule 26 (aggregate -> empty .)
+    Gent_noun_prtf__plur reduce using rule 21 (prop_gent -> empty .)
+
+
+state 27
+
+    (27) aggregate -> prop_gent . Gent_noun_prtf__plur aggregate
+
+    Gent_noun_prtf__plur shift and go to state 45
+
+
+state 28
+
+    (28) aggregate -> LSBRACKET . aggregate op aggregate RSBRACKET aggregate
+    (26) aggregate -> . empty
+    (27) aggregate -> . prop_gent Gent_noun_prtf__plur aggregate
+    (28) aggregate -> . LSBRACKET aggregate op aggregate RSBRACKET aggregate
+    (3) empty -> .
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+
+    LSBRACKET       shift and go to state 28
+    AND             reduce using rule 3 (empty -> .)
+    OR              reduce using rule 3 (empty -> .)
+    DASH            reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADJF_gent       shift and go to state 29
+
+    aggregate                      shift and go to state 46
+    empty                          shift and go to state 26
+    prop_gent                      shift and go to state 27
+
+state 29
+
+    (22) prop_gent -> ADJF_gent . prop_gent
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+    (3) empty -> .
+
+    ADJF_gent       shift and go to state 29
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    Loct            reduce using rule 3 (empty -> .)
+
+    prop_gent                      shift and go to state 47
+    empty                          shift and go to state 48
+
+state 30
+
+    (13) prop_noun -> prop NOUN . prop
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+    (3) empty -> .
+
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+    LSBRACKET       reduce using rule 3 (empty -> .)
+    ADJF_gent       reduce using rule 3 (empty -> .)
+    FROM            reduce using rule 3 (empty -> .)
+    LOC_PREP        reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+
+    prop                           shift and go to state 49
+    empty                          shift and go to state 15
+
+state 31
+
+    (18) prop -> ADJF prop .
+
+    NOUN            reduce using rule 18 (prop -> ADJF prop .)
+    AND             reduce using rule 18 (prop -> ADJF prop .)
+    OR              reduce using rule 18 (prop -> ADJF prop .)
+    DASH            reduce using rule 18 (prop -> ADJF prop .)
+    LSBRACKET       reduce using rule 18 (prop -> ADJF prop .)
+    ADJF_gent       reduce using rule 18 (prop -> ADJF prop .)
+    FROM            reduce using rule 18 (prop -> ADJF prop .)
+    LOC_PREP        reduce using rule 18 (prop -> ADJF prop .)
+    WITH            reduce using rule 18 (prop -> ADJF prop .)
+    WITHOUT         reduce using rule 18 (prop -> ADJF prop .)
+    EXCEPT          reduce using rule 18 (prop -> ADJF prop .)
+    Gent_noun_prtf__plur reduce using rule 18 (prop -> ADJF prop .)
+    ADVB            reduce using rule 18 (prop -> ADJF prop .)
+    VERB            reduce using rule 18 (prop -> ADJF prop .)
+    INFN            reduce using rule 18 (prop -> ADJF prop .)
+    PRTS            reduce using rule 18 (prop -> ADJF prop .)
+    PRCL            reduce using rule 18 (prop -> ADJF prop .)
+    COMP            reduce using rule 18 (prop -> ADJF prop .)
+    DOT             reduce using rule 18 (prop -> ADJF prop .)
+    COMMA           reduce using rule 18 (prop -> ADJF prop .)
+    Ablt            reduce using rule 18 (prop -> ADJF prop .)
+    RPAREN          reduce using rule 18 (prop -> ADJF prop .)
+
+
+state 32
+
+    (19) prop -> LPAREN prop . op prop RPAREN prop
+    (14) op -> . AND
+    (15) op -> . OR
+    (16) op -> . DASH
+
+    AND             shift and go to state 51
+    OR              shift and go to state 52
+    DASH            shift and go to state 53
+
+    op                             shift and go to state 50
+
+state 33
+
+    (7) aim_condition -> aim_condition_prep sub_pred COMMA .
+
+    ADJF            reduce using rule 7 (aim_condition -> aim_condition_prep sub_pred COMMA .)
+    LPAREN          reduce using rule 7 (aim_condition -> aim_condition_prep sub_pred COMMA .)
+    NOUN            reduce using rule 7 (aim_condition -> aim_condition_prep sub_pred COMMA .)
+
+
+state 34
+
+    (44) pred -> quality feature . obj_instr
+    (54) obj_instr -> . obj instr
+    (55) obj -> . empty
+    (56) obj -> . obj_loc obj_name
+    (57) obj -> . obj_name
+    (3) empty -> .
+    (58) obj_loc -> . LOC_PREP
+    (59) obj_loc -> . FROM
+    (60) obj_name -> . name
+    (61) obj_name -> . prop_gent Gent_noun_prtf__plur aggregate_material_loc_part_except
+    (12) name -> . prop_noun aggregate_material_loc_part_except
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+    (13) prop_noun -> . prop NOUN prop
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+
+    Ablt            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    NOUN            reduce using rule 3 (empty -> .)
+    LOC_PREP        shift and go to state 59
+    FROM            shift and go to state 60
+    ADJF_gent       shift and go to state 29
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+
+    obj_instr                      shift and go to state 54
+    obj                            shift and go to state 55
+    empty                          shift and go to state 56
+    obj_loc                        shift and go to state 57
+    obj_name                       shift and go to state 58
+    name                           shift and go to state 61
+    prop_gent                      shift and go to state 62
+    prop_noun                      shift and go to state 13
+    prop                           shift and go to state 14
+
+state 35
+
+    (47) feature -> act .
+
+    LOC_PREP        reduce using rule 47 (feature -> act .)
+    FROM            reduce using rule 47 (feature -> act .)
+    ADJF_gent       reduce using rule 47 (feature -> act .)
+    ADJF            reduce using rule 47 (feature -> act .)
+    LPAREN          reduce using rule 47 (feature -> act .)
+    Ablt            reduce using rule 47 (feature -> act .)
+    Gent_noun_prtf__plur reduce using rule 47 (feature -> act .)
+    NOUN            reduce using rule 47 (feature -> act .)
+    DOT             reduce using rule 47 (feature -> act .)
+    COMMA           reduce using rule 47 (feature -> act .)
+
+
+state 36
+
+    (48) feature -> relation .
+
+    LOC_PREP        reduce using rule 48 (feature -> relation .)
+    FROM            reduce using rule 48 (feature -> relation .)
+    ADJF_gent       reduce using rule 48 (feature -> relation .)
+    ADJF            reduce using rule 48 (feature -> relation .)
+    LPAREN          reduce using rule 48 (feature -> relation .)
+    Ablt            reduce using rule 48 (feature -> relation .)
+    Gent_noun_prtf__plur reduce using rule 48 (feature -> relation .)
+    NOUN            reduce using rule 48 (feature -> relation .)
+    DOT             reduce using rule 48 (feature -> relation .)
+    COMMA           reduce using rule 48 (feature -> relation .)
+
+
+state 37
+
+    (49) act -> VERB .
+
+    LOC_PREP        reduce using rule 49 (act -> VERB .)
+    FROM            reduce using rule 49 (act -> VERB .)
+    ADJF_gent       reduce using rule 49 (act -> VERB .)
+    ADJF            reduce using rule 49 (act -> VERB .)
+    LPAREN          reduce using rule 49 (act -> VERB .)
+    Ablt            reduce using rule 49 (act -> VERB .)
+    Gent_noun_prtf__plur reduce using rule 49 (act -> VERB .)
+    NOUN            reduce using rule 49 (act -> VERB .)
+    DOT             reduce using rule 49 (act -> VERB .)
+    COMMA           reduce using rule 49 (act -> VERB .)
+
+
+state 38
+
+    (50) act -> INFN .
+
+    LOC_PREP        reduce using rule 50 (act -> INFN .)
+    FROM            reduce using rule 50 (act -> INFN .)
+    ADJF_gent       reduce using rule 50 (act -> INFN .)
+    ADJF            reduce using rule 50 (act -> INFN .)
+    LPAREN          reduce using rule 50 (act -> INFN .)
+    Ablt            reduce using rule 50 (act -> INFN .)
+    Gent_noun_prtf__plur reduce using rule 50 (act -> INFN .)
+    NOUN            reduce using rule 50 (act -> INFN .)
+    DOT             reduce using rule 50 (act -> INFN .)
+    COMMA           reduce using rule 50 (act -> INFN .)
+
+
+state 39
+
+    (51) act -> PRTS .
+
+    LOC_PREP        reduce using rule 51 (act -> PRTS .)
+    FROM            reduce using rule 51 (act -> PRTS .)
+    ADJF_gent       reduce using rule 51 (act -> PRTS .)
+    ADJF            reduce using rule 51 (act -> PRTS .)
+    LPAREN          reduce using rule 51 (act -> PRTS .)
+    Ablt            reduce using rule 51 (act -> PRTS .)
+    Gent_noun_prtf__plur reduce using rule 51 (act -> PRTS .)
+    NOUN            reduce using rule 51 (act -> PRTS .)
+    DOT             reduce using rule 51 (act -> PRTS .)
+    COMMA           reduce using rule 51 (act -> PRTS .)
+
+
+state 40
+
+    (52) act -> PRCL .
+
+    LOC_PREP        reduce using rule 52 (act -> PRCL .)
+    FROM            reduce using rule 52 (act -> PRCL .)
+    ADJF_gent       reduce using rule 52 (act -> PRCL .)
+    ADJF            reduce using rule 52 (act -> PRCL .)
+    LPAREN          reduce using rule 52 (act -> PRCL .)
+    Ablt            reduce using rule 52 (act -> PRCL .)
+    Gent_noun_prtf__plur reduce using rule 52 (act -> PRCL .)
+    NOUN            reduce using rule 52 (act -> PRCL .)
+    DOT             reduce using rule 52 (act -> PRCL .)
+    COMMA           reduce using rule 52 (act -> PRCL .)
+
+
+state 41
+
+    (53) relation -> COMP .
+
+    LOC_PREP        reduce using rule 53 (relation -> COMP .)
+    FROM            reduce using rule 53 (relation -> COMP .)
+    ADJF_gent       reduce using rule 53 (relation -> COMP .)
+    ADJF            reduce using rule 53 (relation -> COMP .)
+    LPAREN          reduce using rule 53 (relation -> COMP .)
+    Ablt            reduce using rule 53 (relation -> COMP .)
+    Gent_noun_prtf__plur reduce using rule 53 (relation -> COMP .)
+    NOUN            reduce using rule 53 (relation -> COMP .)
+    DOT             reduce using rule 53 (relation -> COMP .)
+    COMMA           reduce using rule 53 (relation -> COMP .)
+
+
+state 42
+
+    (20) aggregate_material_loc_part_except -> aggregate material . loc part except
+    (31) loc -> . empty
+    (32) loc -> . LOC_PREP prop_name aggregate
+    (3) empty -> .
+
+    LOC_PREP        shift and go to state 65
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+
+    loc                            shift and go to state 63
+    empty                          shift and go to state 64
+
+state 43
+
+    (29) material -> empty .
+
+    LOC_PREP        reduce using rule 29 (material -> empty .)
+    WITH            reduce using rule 29 (material -> empty .)
+    WITHOUT         reduce using rule 29 (material -> empty .)
+    EXCEPT          reduce using rule 29 (material -> empty .)
+    ADVB            reduce using rule 29 (material -> empty .)
+    VERB            reduce using rule 29 (material -> empty .)
+    INFN            reduce using rule 29 (material -> empty .)
+    PRTS            reduce using rule 29 (material -> empty .)
+    PRCL            reduce using rule 29 (material -> empty .)
+    COMP            reduce using rule 29 (material -> empty .)
+    DOT             reduce using rule 29 (material -> empty .)
+    COMMA           reduce using rule 29 (material -> empty .)
+    Ablt            reduce using rule 29 (material -> empty .)
+
+
+state 44
+
+    (30) material -> FROM . prop_gent Gent_noun_prtf__plur
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+    (3) empty -> .
+
+    ADJF_gent       shift and go to state 29
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+
+    prop_gent                      shift and go to state 66
+    empty                          shift and go to state 48
+
+state 45
+
+    (27) aggregate -> prop_gent Gent_noun_prtf__plur . aggregate
+    (26) aggregate -> . empty
+    (27) aggregate -> . prop_gent Gent_noun_prtf__plur aggregate
+    (28) aggregate -> . LSBRACKET aggregate op aggregate RSBRACKET aggregate
+    (3) empty -> .
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+
+    LSBRACKET       shift and go to state 28
+    FROM            reduce using rule 3 (empty -> .)
+    LOC_PREP        reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    AND             reduce using rule 3 (empty -> .)
+    OR              reduce using rule 3 (empty -> .)
+    DASH            reduce using rule 3 (empty -> .)
+    RSBRACKET       reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADJF_gent       shift and go to state 29
+
+    prop_gent                      shift and go to state 27
+    aggregate                      shift and go to state 67
+    empty                          shift and go to state 26
+
+state 46
+
+    (28) aggregate -> LSBRACKET aggregate . op aggregate RSBRACKET aggregate
+    (14) op -> . AND
+    (15) op -> . OR
+    (16) op -> . DASH
+
+    AND             shift and go to state 51
+    OR              shift and go to state 52
+    DASH            shift and go to state 53
+
+    op                             shift and go to state 68
+
+state 47
+
+    (22) prop_gent -> ADJF_gent prop_gent .
+
+    Gent_noun_prtf__plur reduce using rule 22 (prop_gent -> ADJF_gent prop_gent .)
+    Loct            reduce using rule 22 (prop_gent -> ADJF_gent prop_gent .)
+
+
+state 48
+
+    (21) prop_gent -> empty .
+
+    Gent_noun_prtf__plur reduce using rule 21 (prop_gent -> empty .)
+    Loct            reduce using rule 21 (prop_gent -> empty .)
+
+
+state 49
+
+    (13) prop_noun -> prop NOUN prop .
+
+    LSBRACKET       reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    ADJF_gent       reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    FROM            reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    LOC_PREP        reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    WITH            reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    WITHOUT         reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    EXCEPT          reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    Gent_noun_prtf__plur reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    ADVB            reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    VERB            reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    INFN            reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    PRTS            reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    PRCL            reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    COMP            reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    DOT             reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    COMMA           reduce using rule 13 (prop_noun -> prop NOUN prop .)
+    Ablt            reduce using rule 13 (prop_noun -> prop NOUN prop .)
+
+
+state 50
+
+    (19) prop -> LPAREN prop op . prop RPAREN prop
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+    (3) empty -> .
+
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+    RPAREN          reduce using rule 3 (empty -> .)
+
+    prop                           shift and go to state 69
+    empty                          shift and go to state 15
+
+state 51
+
+    (14) op -> AND .
+
+    ADJF            reduce using rule 14 (op -> AND .)
+    LPAREN          reduce using rule 14 (op -> AND .)
+    RPAREN          reduce using rule 14 (op -> AND .)
+    LSBRACKET       reduce using rule 14 (op -> AND .)
+    ADJF_gent       reduce using rule 14 (op -> AND .)
+    RSBRACKET       reduce using rule 14 (op -> AND .)
+    Gent_noun_prtf__plur reduce using rule 14 (op -> AND .)
+    ADJF_ablt       reduce using rule 14 (op -> AND .)
+    LCURLYBRACE     reduce using rule 14 (op -> AND .)
+    RCURLYBRACE     reduce using rule 14 (op -> AND .)
+
+
+state 52
+
+    (15) op -> OR .
+
+    ADJF            reduce using rule 15 (op -> OR .)
+    LPAREN          reduce using rule 15 (op -> OR .)
+    RPAREN          reduce using rule 15 (op -> OR .)
+    LSBRACKET       reduce using rule 15 (op -> OR .)
+    ADJF_gent       reduce using rule 15 (op -> OR .)
+    RSBRACKET       reduce using rule 15 (op -> OR .)
+    Gent_noun_prtf__plur reduce using rule 15 (op -> OR .)
+    ADJF_ablt       reduce using rule 15 (op -> OR .)
+    LCURLYBRACE     reduce using rule 15 (op -> OR .)
+    RCURLYBRACE     reduce using rule 15 (op -> OR .)
+
+
+state 53
+
+    (16) op -> DASH .
+
+    ADJF            reduce using rule 16 (op -> DASH .)
+    LPAREN          reduce using rule 16 (op -> DASH .)
+    RPAREN          reduce using rule 16 (op -> DASH .)
+    LSBRACKET       reduce using rule 16 (op -> DASH .)
+    ADJF_gent       reduce using rule 16 (op -> DASH .)
+    RSBRACKET       reduce using rule 16 (op -> DASH .)
+    Gent_noun_prtf__plur reduce using rule 16 (op -> DASH .)
+    ADJF_ablt       reduce using rule 16 (op -> DASH .)
+    LCURLYBRACE     reduce using rule 16 (op -> DASH .)
+    RCURLYBRACE     reduce using rule 16 (op -> DASH .)
+
+
+state 54
+
+    (44) pred -> quality feature obj_instr .
+
+    DOT             reduce using rule 44 (pred -> quality feature obj_instr .)
+    COMMA           reduce using rule 44 (pred -> quality feature obj_instr .)
+
+
+state 55
+
+    (54) obj_instr -> obj . instr
+    (62) instr -> . empty
+    (63) instr -> . Ablt prop_ablt
+    (3) empty -> .
+
+    Ablt            shift and go to state 72
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+
+    instr                          shift and go to state 70
+    empty                          shift and go to state 71
+
+state 56
+
+    (55) obj -> empty .
+    (21) prop_gent -> empty .
+    (17) prop -> empty .
+
+    Ablt            reduce using rule 55 (obj -> empty .)
+    DOT             reduce using rule 55 (obj -> empty .)
+    COMMA           reduce using rule 55 (obj -> empty .)
+    Gent_noun_prtf__plur reduce using rule 21 (prop_gent -> empty .)
+    NOUN            reduce using rule 17 (prop -> empty .)
+
+
+state 57
+
+    (56) obj -> obj_loc . obj_name
+    (60) obj_name -> . name
+    (61) obj_name -> . prop_gent Gent_noun_prtf__plur aggregate_material_loc_part_except
+    (12) name -> . prop_noun aggregate_material_loc_part_except
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+    (13) prop_noun -> . prop NOUN prop
+    (3) empty -> .
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+
+    ADJF_gent       shift and go to state 29
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    NOUN            reduce using rule 3 (empty -> .)
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+
+    obj_name                       shift and go to state 73
+    name                           shift and go to state 61
+    prop_gent                      shift and go to state 62
+    prop_noun                      shift and go to state 13
+    empty                          shift and go to state 74
+    prop                           shift and go to state 14
+
+state 58
+
+    (57) obj -> obj_name .
+
+    Ablt            reduce using rule 57 (obj -> obj_name .)
+    DOT             reduce using rule 57 (obj -> obj_name .)
+    COMMA           reduce using rule 57 (obj -> obj_name .)
+
+
+state 59
+
+    (58) obj_loc -> LOC_PREP .
+
+    ADJF_gent       reduce using rule 58 (obj_loc -> LOC_PREP .)
+    ADJF            reduce using rule 58 (obj_loc -> LOC_PREP .)
+    LPAREN          reduce using rule 58 (obj_loc -> LOC_PREP .)
+    Gent_noun_prtf__plur reduce using rule 58 (obj_loc -> LOC_PREP .)
+    NOUN            reduce using rule 58 (obj_loc -> LOC_PREP .)
+
+
+state 60
+
+    (59) obj_loc -> FROM .
+
+    ADJF_gent       reduce using rule 59 (obj_loc -> FROM .)
+    ADJF            reduce using rule 59 (obj_loc -> FROM .)
+    LPAREN          reduce using rule 59 (obj_loc -> FROM .)
+    Gent_noun_prtf__plur reduce using rule 59 (obj_loc -> FROM .)
+    NOUN            reduce using rule 59 (obj_loc -> FROM .)
+
+
+state 61
+
+    (60) obj_name -> name .
+
+    Ablt            reduce using rule 60 (obj_name -> name .)
+    DOT             reduce using rule 60 (obj_name -> name .)
+    COMMA           reduce using rule 60 (obj_name -> name .)
+
+
+state 62
+
+    (61) obj_name -> prop_gent . Gent_noun_prtf__plur aggregate_material_loc_part_except
+
+    Gent_noun_prtf__plur shift and go to state 75
+
+
+state 63
+
+    (20) aggregate_material_loc_part_except -> aggregate material loc . part except
+    (33) part -> . empty
+    (34) part -> . prep_part prop_name part
+    (3) empty -> .
+    (39) prep_part -> . WITH
+    (40) prep_part -> . WITHOUT
+
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    WITH            shift and go to state 79
+    WITHOUT         shift and go to state 80
+
+    part                           shift and go to state 76
+    empty                          shift and go to state 77
+    prep_part                      shift and go to state 78
+
+state 64
+
+    (31) loc -> empty .
+
+    WITH            reduce using rule 31 (loc -> empty .)
+    WITHOUT         reduce using rule 31 (loc -> empty .)
+    EXCEPT          reduce using rule 31 (loc -> empty .)
+    ADVB            reduce using rule 31 (loc -> empty .)
+    VERB            reduce using rule 31 (loc -> empty .)
+    INFN            reduce using rule 31 (loc -> empty .)
+    PRTS            reduce using rule 31 (loc -> empty .)
+    PRCL            reduce using rule 31 (loc -> empty .)
+    COMP            reduce using rule 31 (loc -> empty .)
+    DOT             reduce using rule 31 (loc -> empty .)
+    COMMA           reduce using rule 31 (loc -> empty .)
+    Ablt            reduce using rule 31 (loc -> empty .)
+
+
+state 65
+
+    (32) loc -> LOC_PREP . prop_name aggregate
+    (35) prop_name -> . prop_noun
+    (36) prop_name -> . prop_gent Gent_noun_prtf__plur
+    (37) prop_name -> . prop_gent Loct
+    (38) prop_name -> . prop_ablt Ablt prop_ablt
+    (13) prop_noun -> . prop NOUN prop
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+    (23) prop_ablt -> . empty
+    (24) prop_ablt -> . ADJF_ablt prop_ablt
+    (25) prop_ablt -> . LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+    (3) empty -> .
+
+    ADJF_gent       shift and go to state 29
+    ADJF_ablt       shift and go to state 86
+    LCURLYBRACE     shift and go to state 87
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    Loct            reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    NOUN            reduce using rule 3 (empty -> .)
+
+    prop_name                      shift and go to state 81
+    prop_noun                      shift and go to state 82
+    prop_gent                      shift and go to state 83
+    prop_ablt                      shift and go to state 84
+    prop                           shift and go to state 14
+    empty                          shift and go to state 85
+
+state 66
+
+    (30) material -> FROM prop_gent . Gent_noun_prtf__plur
+
+    Gent_noun_prtf__plur shift and go to state 88
+
+
+state 67
+
+    (27) aggregate -> prop_gent Gent_noun_prtf__plur aggregate .
+
+    FROM            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    LOC_PREP        reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    WITH            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    WITHOUT         reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    EXCEPT          reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    ADVB            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    VERB            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    INFN            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    PRTS            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    PRCL            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    COMP            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    DOT             reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    COMMA           reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    Ablt            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    AND             reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    OR              reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    DASH            reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+    RSBRACKET       reduce using rule 27 (aggregate -> prop_gent Gent_noun_prtf__plur aggregate .)
+
+
+state 68
+
+    (28) aggregate -> LSBRACKET aggregate op . aggregate RSBRACKET aggregate
+    (26) aggregate -> . empty
+    (27) aggregate -> . prop_gent Gent_noun_prtf__plur aggregate
+    (28) aggregate -> . LSBRACKET aggregate op aggregate RSBRACKET aggregate
+    (3) empty -> .
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+
+    LSBRACKET       shift and go to state 28
+    RSBRACKET       reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADJF_gent       shift and go to state 29
+
+    aggregate                      shift and go to state 89
+    empty                          shift and go to state 26
+    prop_gent                      shift and go to state 27
+
+state 69
+
+    (19) prop -> LPAREN prop op prop . RPAREN prop
+
+    RPAREN          shift and go to state 90
+
+
+state 70
+
+    (54) obj_instr -> obj instr .
+
+    DOT             reduce using rule 54 (obj_instr -> obj instr .)
+    COMMA           reduce using rule 54 (obj_instr -> obj instr .)
+
+
+state 71
+
+    (62) instr -> empty .
+
+    DOT             reduce using rule 62 (instr -> empty .)
+    COMMA           reduce using rule 62 (instr -> empty .)
+
+
+state 72
+
+    (63) instr -> Ablt . prop_ablt
+    (23) prop_ablt -> . empty
+    (24) prop_ablt -> . ADJF_ablt prop_ablt
+    (25) prop_ablt -> . LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+    (3) empty -> .
+
+    ADJF_ablt       shift and go to state 86
+    LCURLYBRACE     shift and go to state 87
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+
+    prop_ablt                      shift and go to state 91
+    empty                          shift and go to state 92
+
+state 73
+
+    (56) obj -> obj_loc obj_name .
+
+    Ablt            reduce using rule 56 (obj -> obj_loc obj_name .)
+    DOT             reduce using rule 56 (obj -> obj_loc obj_name .)
+    COMMA           reduce using rule 56 (obj -> obj_loc obj_name .)
+
+
+state 74
+
+    (21) prop_gent -> empty .
+    (17) prop -> empty .
+
+    Gent_noun_prtf__plur reduce using rule 21 (prop_gent -> empty .)
+    NOUN            reduce using rule 17 (prop -> empty .)
+
+
+state 75
+
+    (61) obj_name -> prop_gent Gent_noun_prtf__plur . aggregate_material_loc_part_except
+    (20) aggregate_material_loc_part_except -> . aggregate material loc part except
+    (26) aggregate -> . empty
+    (27) aggregate -> . prop_gent Gent_noun_prtf__plur aggregate
+    (28) aggregate -> . LSBRACKET aggregate op aggregate RSBRACKET aggregate
+    (3) empty -> .
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+
+    LSBRACKET       shift and go to state 28
+    FROM            reduce using rule 3 (empty -> .)
+    LOC_PREP        reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADJF_gent       shift and go to state 29
+
+    prop_gent                      shift and go to state 27
+    aggregate_material_loc_part_except shift and go to state 93
+    aggregate                      shift and go to state 25
+    empty                          shift and go to state 26
+
+state 76
+
+    (20) aggregate_material_loc_part_except -> aggregate material loc part . except
+    (41) except -> . empty
+    (42) except -> . EXCEPT aggregate
+    (3) empty -> .
+
+    EXCEPT          shift and go to state 96
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+
+    except                         shift and go to state 94
+    empty                          shift and go to state 95
+
+state 77
+
+    (33) part -> empty .
+
+    EXCEPT          reduce using rule 33 (part -> empty .)
+    ADVB            reduce using rule 33 (part -> empty .)
+    VERB            reduce using rule 33 (part -> empty .)
+    INFN            reduce using rule 33 (part -> empty .)
+    PRTS            reduce using rule 33 (part -> empty .)
+    PRCL            reduce using rule 33 (part -> empty .)
+    COMP            reduce using rule 33 (part -> empty .)
+    DOT             reduce using rule 33 (part -> empty .)
+    COMMA           reduce using rule 33 (part -> empty .)
+    Ablt            reduce using rule 33 (part -> empty .)
+
+
+state 78
+
+    (34) part -> prep_part . prop_name part
+    (35) prop_name -> . prop_noun
+    (36) prop_name -> . prop_gent Gent_noun_prtf__plur
+    (37) prop_name -> . prop_gent Loct
+    (38) prop_name -> . prop_ablt Ablt prop_ablt
+    (13) prop_noun -> . prop NOUN prop
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+    (23) prop_ablt -> . empty
+    (24) prop_ablt -> . ADJF_ablt prop_ablt
+    (25) prop_ablt -> . LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+    (3) empty -> .
+
+    ADJF_gent       shift and go to state 29
+    ADJF_ablt       shift and go to state 86
+    LCURLYBRACE     shift and go to state 87
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    Loct            reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    NOUN            reduce using rule 3 (empty -> .)
+
+    prop_name                      shift and go to state 97
+    prop_noun                      shift and go to state 82
+    prop_gent                      shift and go to state 83
+    prop_ablt                      shift and go to state 84
+    prop                           shift and go to state 14
+    empty                          shift and go to state 85
+
+state 79
+
+    (39) prep_part -> WITH .
+
+    ADJF_gent       reduce using rule 39 (prep_part -> WITH .)
+    ADJF_ablt       reduce using rule 39 (prep_part -> WITH .)
+    LCURLYBRACE     reduce using rule 39 (prep_part -> WITH .)
+    ADJF            reduce using rule 39 (prep_part -> WITH .)
+    LPAREN          reduce using rule 39 (prep_part -> WITH .)
+    Gent_noun_prtf__plur reduce using rule 39 (prep_part -> WITH .)
+    Loct            reduce using rule 39 (prep_part -> WITH .)
+    Ablt            reduce using rule 39 (prep_part -> WITH .)
+    NOUN            reduce using rule 39 (prep_part -> WITH .)
+
+
+state 80
+
+    (40) prep_part -> WITHOUT .
+
+    ADJF_gent       reduce using rule 40 (prep_part -> WITHOUT .)
+    ADJF_ablt       reduce using rule 40 (prep_part -> WITHOUT .)
+    LCURLYBRACE     reduce using rule 40 (prep_part -> WITHOUT .)
+    ADJF            reduce using rule 40 (prep_part -> WITHOUT .)
+    LPAREN          reduce using rule 40 (prep_part -> WITHOUT .)
+    Gent_noun_prtf__plur reduce using rule 40 (prep_part -> WITHOUT .)
+    Loct            reduce using rule 40 (prep_part -> WITHOUT .)
+    Ablt            reduce using rule 40 (prep_part -> WITHOUT .)
+    NOUN            reduce using rule 40 (prep_part -> WITHOUT .)
+
+
+state 81
+
+    (32) loc -> LOC_PREP prop_name . aggregate
+    (26) aggregate -> . empty
+    (27) aggregate -> . prop_gent Gent_noun_prtf__plur aggregate
+    (28) aggregate -> . LSBRACKET aggregate op aggregate RSBRACKET aggregate
+    (3) empty -> .
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+
+    LSBRACKET       shift and go to state 28
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADJF_gent       shift and go to state 29
+
+    aggregate                      shift and go to state 98
+    empty                          shift and go to state 26
+    prop_gent                      shift and go to state 27
+
+state 82
+
+    (35) prop_name -> prop_noun .
+
+    LSBRACKET       reduce using rule 35 (prop_name -> prop_noun .)
+    ADJF_gent       reduce using rule 35 (prop_name -> prop_noun .)
+    Gent_noun_prtf__plur reduce using rule 35 (prop_name -> prop_noun .)
+    WITH            reduce using rule 35 (prop_name -> prop_noun .)
+    WITHOUT         reduce using rule 35 (prop_name -> prop_noun .)
+    EXCEPT          reduce using rule 35 (prop_name -> prop_noun .)
+    ADVB            reduce using rule 35 (prop_name -> prop_noun .)
+    VERB            reduce using rule 35 (prop_name -> prop_noun .)
+    INFN            reduce using rule 35 (prop_name -> prop_noun .)
+    PRTS            reduce using rule 35 (prop_name -> prop_noun .)
+    PRCL            reduce using rule 35 (prop_name -> prop_noun .)
+    COMP            reduce using rule 35 (prop_name -> prop_noun .)
+    DOT             reduce using rule 35 (prop_name -> prop_noun .)
+    COMMA           reduce using rule 35 (prop_name -> prop_noun .)
+    Ablt            reduce using rule 35 (prop_name -> prop_noun .)
+
+
+state 83
+
+    (36) prop_name -> prop_gent . Gent_noun_prtf__plur
+    (37) prop_name -> prop_gent . Loct
+
+    Gent_noun_prtf__plur shift and go to state 99
+    Loct            shift and go to state 100
+
+
+state 84
+
+    (38) prop_name -> prop_ablt . Ablt prop_ablt
+
+    Ablt            shift and go to state 101
+
+
+state 85
+
+    (21) prop_gent -> empty .
+    (23) prop_ablt -> empty .
+    (17) prop -> empty .
+
+    Gent_noun_prtf__plur reduce using rule 21 (prop_gent -> empty .)
+    Loct            reduce using rule 21 (prop_gent -> empty .)
+    Ablt            reduce using rule 23 (prop_ablt -> empty .)
+    NOUN            reduce using rule 17 (prop -> empty .)
+
+
+state 86
+
+    (24) prop_ablt -> ADJF_ablt . prop_ablt
+    (23) prop_ablt -> . empty
+    (24) prop_ablt -> . ADJF_ablt prop_ablt
+    (25) prop_ablt -> . LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+    (3) empty -> .
+
+    ADJF_ablt       shift and go to state 86
+    LCURLYBRACE     shift and go to state 87
+    Ablt            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    AND             reduce using rule 3 (empty -> .)
+    OR              reduce using rule 3 (empty -> .)
+    DASH            reduce using rule 3 (empty -> .)
+    LSBRACKET       reduce using rule 3 (empty -> .)
+    ADJF_gent       reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    RCURLYBRACE     reduce using rule 3 (empty -> .)
+
+    prop_ablt                      shift and go to state 102
+    empty                          shift and go to state 92
+
+state 87
+
+    (25) prop_ablt -> LCURLYBRACE . prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+    (23) prop_ablt -> . empty
+    (24) prop_ablt -> . ADJF_ablt prop_ablt
+    (25) prop_ablt -> . LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+    (3) empty -> .
+
+    ADJF_ablt       shift and go to state 86
+    LCURLYBRACE     shift and go to state 87
+    AND             reduce using rule 3 (empty -> .)
+    OR              reduce using rule 3 (empty -> .)
+    DASH            reduce using rule 3 (empty -> .)
+
+    prop_ablt                      shift and go to state 103
+    empty                          shift and go to state 92
+
+state 88
+
+    (30) material -> FROM prop_gent Gent_noun_prtf__plur .
+
+    LOC_PREP        reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    WITH            reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    WITHOUT         reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    EXCEPT          reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    ADVB            reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    VERB            reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    INFN            reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    PRTS            reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    PRCL            reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    COMP            reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    DOT             reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    COMMA           reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+    Ablt            reduce using rule 30 (material -> FROM prop_gent Gent_noun_prtf__plur .)
+
+
+state 89
+
+    (28) aggregate -> LSBRACKET aggregate op aggregate . RSBRACKET aggregate
+
+    RSBRACKET       shift and go to state 104
+
+
+state 90
+
+    (19) prop -> LPAREN prop op prop RPAREN . prop
+    (17) prop -> . empty
+    (18) prop -> . ADJF prop
+    (19) prop -> . LPAREN prop op prop RPAREN prop
+    (3) empty -> .
+
+    ADJF            shift and go to state 16
+    LPAREN          shift and go to state 17
+    NOUN            reduce using rule 3 (empty -> .)
+    AND             reduce using rule 3 (empty -> .)
+    OR              reduce using rule 3 (empty -> .)
+    DASH            reduce using rule 3 (empty -> .)
+    LSBRACKET       reduce using rule 3 (empty -> .)
+    ADJF_gent       reduce using rule 3 (empty -> .)
+    FROM            reduce using rule 3 (empty -> .)
+    LOC_PREP        reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    RPAREN          reduce using rule 3 (empty -> .)
+
+    prop                           shift and go to state 105
+    empty                          shift and go to state 15
+
+state 91
+
+    (63) instr -> Ablt prop_ablt .
+
+    DOT             reduce using rule 63 (instr -> Ablt prop_ablt .)
+    COMMA           reduce using rule 63 (instr -> Ablt prop_ablt .)
+
+
+state 92
+
+    (23) prop_ablt -> empty .
+
+    DOT             reduce using rule 23 (prop_ablt -> empty .)
+    COMMA           reduce using rule 23 (prop_ablt -> empty .)
+    Ablt            reduce using rule 23 (prop_ablt -> empty .)
+    AND             reduce using rule 23 (prop_ablt -> empty .)
+    OR              reduce using rule 23 (prop_ablt -> empty .)
+    DASH            reduce using rule 23 (prop_ablt -> empty .)
+    LSBRACKET       reduce using rule 23 (prop_ablt -> empty .)
+    ADJF_gent       reduce using rule 23 (prop_ablt -> empty .)
+    Gent_noun_prtf__plur reduce using rule 23 (prop_ablt -> empty .)
+    WITH            reduce using rule 23 (prop_ablt -> empty .)
+    WITHOUT         reduce using rule 23 (prop_ablt -> empty .)
+    EXCEPT          reduce using rule 23 (prop_ablt -> empty .)
+    ADVB            reduce using rule 23 (prop_ablt -> empty .)
+    VERB            reduce using rule 23 (prop_ablt -> empty .)
+    INFN            reduce using rule 23 (prop_ablt -> empty .)
+    PRTS            reduce using rule 23 (prop_ablt -> empty .)
+    PRCL            reduce using rule 23 (prop_ablt -> empty .)
+    COMP            reduce using rule 23 (prop_ablt -> empty .)
+    RCURLYBRACE     reduce using rule 23 (prop_ablt -> empty .)
+
+
+state 93
+
+    (61) obj_name -> prop_gent Gent_noun_prtf__plur aggregate_material_loc_part_except .
+
+    Ablt            reduce using rule 61 (obj_name -> prop_gent Gent_noun_prtf__plur aggregate_material_loc_part_except .)
+    DOT             reduce using rule 61 (obj_name -> prop_gent Gent_noun_prtf__plur aggregate_material_loc_part_except .)
+    COMMA           reduce using rule 61 (obj_name -> prop_gent Gent_noun_prtf__plur aggregate_material_loc_part_except .)
+
+
+state 94
+
+    (20) aggregate_material_loc_part_except -> aggregate material loc part except .
+
+    ADVB            reduce using rule 20 (aggregate_material_loc_part_except -> aggregate material loc part except .)
+    VERB            reduce using rule 20 (aggregate_material_loc_part_except -> aggregate material loc part except .)
+    INFN            reduce using rule 20 (aggregate_material_loc_part_except -> aggregate material loc part except .)
+    PRTS            reduce using rule 20 (aggregate_material_loc_part_except -> aggregate material loc part except .)
+    PRCL            reduce using rule 20 (aggregate_material_loc_part_except -> aggregate material loc part except .)
+    COMP            reduce using rule 20 (aggregate_material_loc_part_except -> aggregate material loc part except .)
+    DOT             reduce using rule 20 (aggregate_material_loc_part_except -> aggregate material loc part except .)
+    COMMA           reduce using rule 20 (aggregate_material_loc_part_except -> aggregate material loc part except .)
+    Ablt            reduce using rule 20 (aggregate_material_loc_part_except -> aggregate material loc part except .)
+
+
+state 95
+
+    (41) except -> empty .
+
+    ADVB            reduce using rule 41 (except -> empty .)
+    VERB            reduce using rule 41 (except -> empty .)
+    INFN            reduce using rule 41 (except -> empty .)
+    PRTS            reduce using rule 41 (except -> empty .)
+    PRCL            reduce using rule 41 (except -> empty .)
+    COMP            reduce using rule 41 (except -> empty .)
+    DOT             reduce using rule 41 (except -> empty .)
+    COMMA           reduce using rule 41 (except -> empty .)
+    Ablt            reduce using rule 41 (except -> empty .)
+
+
+state 96
+
+    (42) except -> EXCEPT . aggregate
+    (26) aggregate -> . empty
+    (27) aggregate -> . prop_gent Gent_noun_prtf__plur aggregate
+    (28) aggregate -> . LSBRACKET aggregate op aggregate RSBRACKET aggregate
+    (3) empty -> .
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+
+    LSBRACKET       shift and go to state 28
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADJF_gent       shift and go to state 29
+
+    aggregate                      shift and go to state 106
+    empty                          shift and go to state 26
+    prop_gent                      shift and go to state 27
+
+state 97
+
+    (34) part -> prep_part prop_name . part
+    (33) part -> . empty
+    (34) part -> . prep_part prop_name part
+    (3) empty -> .
+    (39) prep_part -> . WITH
+    (40) prep_part -> . WITHOUT
+
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    WITH            shift and go to state 79
+    WITHOUT         shift and go to state 80
+
+    prep_part                      shift and go to state 78
+    part                           shift and go to state 107
+    empty                          shift and go to state 77
+
+state 98
+
+    (32) loc -> LOC_PREP prop_name aggregate .
+
+    WITH            reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    WITHOUT         reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    EXCEPT          reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    ADVB            reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    VERB            reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    INFN            reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    PRTS            reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    PRCL            reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    COMP            reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    DOT             reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    COMMA           reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+    Ablt            reduce using rule 32 (loc -> LOC_PREP prop_name aggregate .)
+
+
+state 99
+
+    (36) prop_name -> prop_gent Gent_noun_prtf__plur .
+
+    LSBRACKET       reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    ADJF_gent       reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    Gent_noun_prtf__plur reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    WITH            reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    WITHOUT         reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    EXCEPT          reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    ADVB            reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    VERB            reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    INFN            reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    PRTS            reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    PRCL            reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    COMP            reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    DOT             reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    COMMA           reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+    Ablt            reduce using rule 36 (prop_name -> prop_gent Gent_noun_prtf__plur .)
+
+
+state 100
+
+    (37) prop_name -> prop_gent Loct .
+
+    LSBRACKET       reduce using rule 37 (prop_name -> prop_gent Loct .)
+    ADJF_gent       reduce using rule 37 (prop_name -> prop_gent Loct .)
+    Gent_noun_prtf__plur reduce using rule 37 (prop_name -> prop_gent Loct .)
+    WITH            reduce using rule 37 (prop_name -> prop_gent Loct .)
+    WITHOUT         reduce using rule 37 (prop_name -> prop_gent Loct .)
+    EXCEPT          reduce using rule 37 (prop_name -> prop_gent Loct .)
+    ADVB            reduce using rule 37 (prop_name -> prop_gent Loct .)
+    VERB            reduce using rule 37 (prop_name -> prop_gent Loct .)
+    INFN            reduce using rule 37 (prop_name -> prop_gent Loct .)
+    PRTS            reduce using rule 37 (prop_name -> prop_gent Loct .)
+    PRCL            reduce using rule 37 (prop_name -> prop_gent Loct .)
+    COMP            reduce using rule 37 (prop_name -> prop_gent Loct .)
+    DOT             reduce using rule 37 (prop_name -> prop_gent Loct .)
+    COMMA           reduce using rule 37 (prop_name -> prop_gent Loct .)
+    Ablt            reduce using rule 37 (prop_name -> prop_gent Loct .)
+
+
+state 101
+
+    (38) prop_name -> prop_ablt Ablt . prop_ablt
+    (23) prop_ablt -> . empty
+    (24) prop_ablt -> . ADJF_ablt prop_ablt
+    (25) prop_ablt -> . LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+    (3) empty -> .
+
+    ADJF_ablt       shift and go to state 86
+    LCURLYBRACE     shift and go to state 87
+    LSBRACKET       reduce using rule 3 (empty -> .)
+    ADJF_gent       reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+
+    prop_ablt                      shift and go to state 108
+    empty                          shift and go to state 92
+
+state 102
+
+    (24) prop_ablt -> ADJF_ablt prop_ablt .
+
+    Ablt            reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    DOT             reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    COMMA           reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    AND             reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    OR              reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    DASH            reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    LSBRACKET       reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    ADJF_gent       reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    Gent_noun_prtf__plur reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    WITH            reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    WITHOUT         reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    EXCEPT          reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    ADVB            reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    VERB            reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    INFN            reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    PRTS            reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    PRCL            reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    COMP            reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+    RCURLYBRACE     reduce using rule 24 (prop_ablt -> ADJF_ablt prop_ablt .)
+
+
+state 103
+
+    (25) prop_ablt -> LCURLYBRACE prop_ablt . op prop_ablt RCURLYBRACE prop_ablt
+    (14) op -> . AND
+    (15) op -> . OR
+    (16) op -> . DASH
+
+    AND             shift and go to state 51
+    OR              shift and go to state 52
+    DASH            shift and go to state 53
+
+    op                             shift and go to state 109
+
+state 104
+
+    (28) aggregate -> LSBRACKET aggregate op aggregate RSBRACKET . aggregate
+    (26) aggregate -> . empty
+    (27) aggregate -> . prop_gent Gent_noun_prtf__plur aggregate
+    (28) aggregate -> . LSBRACKET aggregate op aggregate RSBRACKET aggregate
+    (3) empty -> .
+    (21) prop_gent -> . empty
+    (22) prop_gent -> . ADJF_gent prop_gent
+
+    LSBRACKET       shift and go to state 28
+    FROM            reduce using rule 3 (empty -> .)
+    LOC_PREP        reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    Ablt            reduce using rule 3 (empty -> .)
+    AND             reduce using rule 3 (empty -> .)
+    OR              reduce using rule 3 (empty -> .)
+    DASH            reduce using rule 3 (empty -> .)
+    RSBRACKET       reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    ADJF_gent       shift and go to state 29
+
+    aggregate                      shift and go to state 110
+    empty                          shift and go to state 26
+    prop_gent                      shift and go to state 27
+
+state 105
+
+    (19) prop -> LPAREN prop op prop RPAREN prop .
+
+    NOUN            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    AND             reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    OR              reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    DASH            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    LSBRACKET       reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    ADJF_gent       reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    FROM            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    LOC_PREP        reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    WITH            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    WITHOUT         reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    EXCEPT          reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    Gent_noun_prtf__plur reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    ADVB            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    VERB            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    INFN            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    PRTS            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    PRCL            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    COMP            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    DOT             reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    COMMA           reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    Ablt            reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+    RPAREN          reduce using rule 19 (prop -> LPAREN prop op prop RPAREN prop .)
+
+
+state 106
+
+    (42) except -> EXCEPT aggregate .
+
+    ADVB            reduce using rule 42 (except -> EXCEPT aggregate .)
+    VERB            reduce using rule 42 (except -> EXCEPT aggregate .)
+    INFN            reduce using rule 42 (except -> EXCEPT aggregate .)
+    PRTS            reduce using rule 42 (except -> EXCEPT aggregate .)
+    PRCL            reduce using rule 42 (except -> EXCEPT aggregate .)
+    COMP            reduce using rule 42 (except -> EXCEPT aggregate .)
+    DOT             reduce using rule 42 (except -> EXCEPT aggregate .)
+    COMMA           reduce using rule 42 (except -> EXCEPT aggregate .)
+    Ablt            reduce using rule 42 (except -> EXCEPT aggregate .)
+
+
+state 107
+
+    (34) part -> prep_part prop_name part .
+
+    EXCEPT          reduce using rule 34 (part -> prep_part prop_name part .)
+    ADVB            reduce using rule 34 (part -> prep_part prop_name part .)
+    VERB            reduce using rule 34 (part -> prep_part prop_name part .)
+    INFN            reduce using rule 34 (part -> prep_part prop_name part .)
+    PRTS            reduce using rule 34 (part -> prep_part prop_name part .)
+    PRCL            reduce using rule 34 (part -> prep_part prop_name part .)
+    COMP            reduce using rule 34 (part -> prep_part prop_name part .)
+    DOT             reduce using rule 34 (part -> prep_part prop_name part .)
+    COMMA           reduce using rule 34 (part -> prep_part prop_name part .)
+    Ablt            reduce using rule 34 (part -> prep_part prop_name part .)
+
+
+state 108
+
+    (38) prop_name -> prop_ablt Ablt prop_ablt .
+
+    LSBRACKET       reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    ADJF_gent       reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    Gent_noun_prtf__plur reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    WITH            reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    WITHOUT         reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    EXCEPT          reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    ADVB            reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    VERB            reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    INFN            reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    PRTS            reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    PRCL            reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    COMP            reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    DOT             reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    COMMA           reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+    Ablt            reduce using rule 38 (prop_name -> prop_ablt Ablt prop_ablt .)
+
+
+state 109
+
+    (25) prop_ablt -> LCURLYBRACE prop_ablt op . prop_ablt RCURLYBRACE prop_ablt
+    (23) prop_ablt -> . empty
+    (24) prop_ablt -> . ADJF_ablt prop_ablt
+    (25) prop_ablt -> . LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+    (3) empty -> .
+
+    ADJF_ablt       shift and go to state 86
+    LCURLYBRACE     shift and go to state 87
+    RCURLYBRACE     reduce using rule 3 (empty -> .)
+
+    prop_ablt                      shift and go to state 111
+    empty                          shift and go to state 92
+
+state 110
+
+    (28) aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .
+
+    FROM            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    LOC_PREP        reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    WITH            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    WITHOUT         reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    EXCEPT          reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    ADVB            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    VERB            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    INFN            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    PRTS            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    PRCL            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    COMP            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    DOT             reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    COMMA           reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    Ablt            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    AND             reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    OR              reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    DASH            reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+    RSBRACKET       reduce using rule 28 (aggregate -> LSBRACKET aggregate op aggregate RSBRACKET aggregate .)
+
+
+state 111
+
+    (25) prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt . RCURLYBRACE prop_ablt
+
+    RCURLYBRACE     shift and go to state 112
+
+
+state 112
+
+    (25) prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE . prop_ablt
+    (23) prop_ablt -> . empty
+    (24) prop_ablt -> . ADJF_ablt prop_ablt
+    (25) prop_ablt -> . LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt
+    (3) empty -> .
+
+    ADJF_ablt       shift and go to state 86
+    LCURLYBRACE     shift and go to state 87
+    Ablt            reduce using rule 3 (empty -> .)
+    DOT             reduce using rule 3 (empty -> .)
+    COMMA           reduce using rule 3 (empty -> .)
+    AND             reduce using rule 3 (empty -> .)
+    OR              reduce using rule 3 (empty -> .)
+    DASH            reduce using rule 3 (empty -> .)
+    LSBRACKET       reduce using rule 3 (empty -> .)
+    ADJF_gent       reduce using rule 3 (empty -> .)
+    Gent_noun_prtf__plur reduce using rule 3 (empty -> .)
+    WITH            reduce using rule 3 (empty -> .)
+    WITHOUT         reduce using rule 3 (empty -> .)
+    EXCEPT          reduce using rule 3 (empty -> .)
+    ADVB            reduce using rule 3 (empty -> .)
+    VERB            reduce using rule 3 (empty -> .)
+    INFN            reduce using rule 3 (empty -> .)
+    PRTS            reduce using rule 3 (empty -> .)
+    PRCL            reduce using rule 3 (empty -> .)
+    COMP            reduce using rule 3 (empty -> .)
+    RCURLYBRACE     reduce using rule 3 (empty -> .)
+
+    prop_ablt                      shift and go to state 113
+    empty                          shift and go to state 92
+
+state 113
+
+    (25) prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .
+
+    Ablt            reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    DOT             reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    COMMA           reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    AND             reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    OR              reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    DASH            reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    LSBRACKET       reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    ADJF_gent       reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    Gent_noun_prtf__plur reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    WITH            reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    WITHOUT         reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    EXCEPT          reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    ADVB            reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    VERB            reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    INFN            reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    PRTS            reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    PRCL            reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    COMP            reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+    RCURLYBRACE     reduce using rule 25 (prop_ablt -> LCURLYBRACE prop_ablt op prop_ablt RCURLYBRACE prop_ablt .)
+

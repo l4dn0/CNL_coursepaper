@@ -1,0 +1,5 @@
+ruwordnet>=0.0.6
+pymorphy3>=2.0.3
+ply>=3.11
+pygubu>=0.37.1
+pygubu-designer>=0.41.1
