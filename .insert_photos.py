@@ -9,7 +9,6 @@ fileslist = os.listdir(screensfolder)
 
 try:
     f = open('images.db', 'x')
-
     conn = sqlite3.connect('images.db')
     cursor = conn.cursor()
 

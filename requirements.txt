@@ -3,3 +3,4 @@ pymorphy3>=2.0.3
 ply>=3.11
 pygubu>=0.37.1
 pygubu-designer>=0.41.1
+pillow>=11.2.1
