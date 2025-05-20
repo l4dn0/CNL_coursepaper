@@ -23,7 +23,6 @@ class HelloworldApp:
         for img_bin in imgs:
             image_stream = io.BytesIO(img_bin)
             image = Image.open(image_stream).resize((350, 150))
-            print(image)
 
             photo = ImageTk.PhotoImage(image)
             self.photo_refs.append(photo)
@@ -41,7 +40,9 @@ class HelloworldApp:
                 if a.frm_match(parser.parse(tmpl)[0], parser.parse(write[1])[0]):
                    overlapped.append(write[2])
             self.display_images(overlapped)
-        except ply.lex.LexError:
+            self.errorLabel.set(" ")
+        except:
+            self.errorLabel.set("Введённый текст не соответствует спецификации CNL.")
             print("Введённый текст не соответствует спецификации CNL.")
 
     def __init__(self, master=None):
@@ -51,10 +52,13 @@ class HelloworldApp:
         builder.add_from_file(PROJECT_UI)
         self.mainwindow = builder.get_object('mainwindow', master)
         self.cnl_value = StringVar()
+        self.errorLabel = StringVar()
 
         self.canvas = builder.get_object('canvas1')
         entry = builder.get_object('entry1')
+        errorlabel = builder.get_object('label3')
         entry.config(textvariable=self.cnl_value)
+        errorlabel.config(textvariable=self.errorLabel)
         builder.connect_callbacks(self)
     def run(self):
         self.mainwindow.mainloop()

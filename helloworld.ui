@@ -67,6 +67,17 @@
                 </layout>
               </object>
             </child>
+            <child>
+              <object class="ttk.Label" id="label3">
+                <property name="textvariable">string:errorlabel</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="columnspan">3</property>
+                  <property name="pady">5</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
           </object>
         </child>
         <child>
