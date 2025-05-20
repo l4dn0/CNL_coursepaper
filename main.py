@@ -1,44 +1,37 @@
-#print(a.frm_match(parser.parse('элемент поверхности объекта.')[0], parser.parse('красный железный элемент поверхности объекта узла сборки.')[0]))
 import io
-
-import ply.lex
-# helloworld.py
-from match import cnl_match
-from cnl_parser import parser
 import pathlib
-import tkinter as tk
-import tkinter.ttk as ttk
-from tkinter import StringVar
-from PIL import Image, ImageTk
-
 import pygubu
+from cnl_parser import parser
+from tkinter import StringVar
+from match import cnl_match
+from PIL import Image, ImageTk
 from orm import select_all
 
 PROJECT_PATH = pathlib.Path(__file__).parent
 PROJECT_UI = PROJECT_PATH / "helloworld.ui"
 
+
 class HelloworldApp:
     def display_images(self, imgs):
+        photo_refs = []
         margin = 0
         for img_bin in imgs:
             image_stream = io.BytesIO(img_bin)
             image = Image.open(image_stream).resize((350, 150))
 
             photo = ImageTk.PhotoImage(image)
-            self.photo_refs.append(photo)
+            photo_refs.append(photo)
             self.canvas.create_image(0, margin, anchor="nw", image=photo)
             margin += 150
 
-
     def search(self):
-        self.photo_refs = []
         a = cnl_match()
         tmpl = self.cnl_value.get()
         overlapped = []
         try:
             for write in select_all():
                 if a.frm_match(parser.parse(tmpl)[0], parser.parse(write[1])[0]):
-                   overlapped.append(write[2])
+                    overlapped.append(write[2])
             self.display_images(overlapped)
             self.errorLabel.set(" ")
         except:
@@ -60,9 +53,9 @@ class HelloworldApp:
         entry.config(textvariable=self.cnl_value)
         errorlabel.config(textvariable=self.errorLabel)
         builder.connect_callbacks(self)
+
     def run(self):
         self.mainwindow.mainloop()
-
 
 
 if __name__ == '__main__':
