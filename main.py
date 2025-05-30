@@ -13,14 +13,14 @@ PROJECT_UI = PROJECT_PATH / "helloworld.ui"
 
 class HelloworldApp:
     def display_images(self, imgs):
-        photo_refs = []
+        self.photo_refs = []
         margin = 0
         for img_bin in imgs:
-            image_stream = io.BytesIO(img_bin)
+            print(img_bin[1],end="")
+            image_stream = io.BytesIO(img_bin[2])
             image = Image.open(image_stream).resize((350, 150))
-
             photo = ImageTk.PhotoImage(image)
-            photo_refs.append(photo)
+            self.photo_refs.append(photo)
             self.canvas.create_image(0, margin, anchor="nw", image=photo)
             margin += 150
 
@@ -31,12 +31,12 @@ class HelloworldApp:
         try:
             for write in select_all():
                 if a.frm_match(parser.parse(tmpl)[0], parser.parse(write[1])[0]):
-                    overlapped.append(write[2])
+                    overlapped.append(write)
             self.display_images(overlapped)
             self.errorLabel.set(" ")
-        except:
+        except Exception as e:
             self.errorLabel.set("Введённый текст не соответствует спецификации CNL.")
-            print("Введённый текст не соответствует спецификации CNL.")
+            print(e)
 
     def __init__(self, master=None):
         # 1: Create a builder and setup resources path (if you have images)
