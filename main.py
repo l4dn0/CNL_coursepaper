@@ -30,6 +30,7 @@ class HelloworldApp:
         overlapped = []
         try:
             for write in select_all():
+                print(parser.parse(write[1]))
                 if a.frm_match(parser.parse(tmpl)[0], parser.parse(write[1])[0]):
                     overlapped.append(write)
             self.display_images(overlapped)
